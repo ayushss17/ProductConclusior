@@ -1,0 +1,166 @@
+@font-face {
+    font-family: para;
+    src: url(/Conclusior/templates/Fonts/Montserrat/Montserrat-ExtraLightItalic.otf);
+}
+@font-face {
+    font-family: title;
+    src: url(/Conclusior/templates/Fonts/aileron.italic.otf);
+}
+@font-face {
+    font-family: btfont ;
+    src: url(/Conclusior/templates/Fonts/pophalf.ttf);
+}
+@keyframes float{
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 25px); }
+    100%   { transform: translate(0, -0px); } 
+}
+@keyframes typing{
+    from { width: 50% }
+    to { width: 100% }
+}
+@keyframes blink-cursor{
+    from, to { border-color: transparent }
+    10% { border-color: black; }
+}
+body,html{
+    margin: 0;
+    padding: 0;
+}
+#Titles{
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons{
+    border-color: B7E0FF;
+    margin: 15px 25px 15px 25px;
+    background-color: beige;
+    width: 170px;
+    height: 40px;
+    align-items: center;
+    border-radius: 10px 10px 10px 10px;
+    display: flex;
+}
+.buttons .acc1{
+    border: 1px;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px 10px 10px 10px;
+    background-color: FFF5CD;
+    font-family: title;
+    font-size: 20px;
+
+}
+.buttons .acc2{
+    border: 0px;
+    width: 100px;
+    height: 40px;
+    background-color: FFF5CD;
+    font-family: title;
+    font-size: 20px;
+
+    border-radius: 10px 10px 10px 10px;
+}
+ 
+.buttons .acc1:hover{
+    background-color: fb8500;
+   
+    
+}  
+.buttons .acc2:hover{
+    background-color: fb8500;
+
+}
+.NavBar h3{
+    margin-right: 1000px;
+    float: left;
+    font-family: title;
+    font-size: 20px;
+
+}
+.intro{
+    background-color: FFF5CD;
+    top:0;
+    padding: 0;
+    height: 400px;
+    font-family: para   ;
+}
+.intro pre{
+    font-family: para;
+    margin: 90px 10px 200px;
+    font-size: 20px;
+    animation-name: float;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out; 
+}
+.intro img{
+    margin: 0px 50px 10px 0px;
+    height: 350px;
+    width: 450px;
+}
+.NavBar{
+    height: 70px;
+    background-color: B7E0FF;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top:0;
+    display: flex;
+    
+}
+.Content{
+    background-color: FFCFB3;
+    top: 0;
+    padding: 0;
+    height: 400px;
+}
+.Content h4{
+    text-align: center;
+
+}
+.Content h2{
+    text-align: center;
+    font-size: 25px;
+    margin-left: 40px;
+    animation: typing 4.8s steps(40, end),blink-cursor .85s step-end infinite;
+
+}
+.join{
+    height: 50px;
+    margin: 50px 230px 0px 400px;
+    width: 780px;
+    background-color: white;
+    border-radius: 30px ;
+}
+.Content input{
+    height: 50px;
+    width: 670px;
+    border-radius: 30px;
+    border: 0;
+    font-size: large;
+    cursor: col-resize;
+}
+.Content select{
+    border: 0px;
+    height: 50px;
+    border-radius: 30px;
+    font-size: 20px;
+}
+.Content select{
+    position: absolute;
+}
+.Content .search{
+    margin: 50px 500px 0px 750px;
+    height: 60;
+    width: 150px;
+    font-family: btfont;
+
+    border-radius: 0px 50px 50px 0;
+    background-color: FDE2ED; 
+    font-size: 20px;
+}
+.Content .search:hover{
+    background-color: aliceblue;
+}
