@@ -1,15 +1,15 @@
 @font-face {
     font-family: para;
-    src: url(/Conclusior/templates/Fonts/Montserrat/Montserrat-ExtraLightItalic.otf);
+    src: url("{{ url_for('static', filename='Fonts/Montserrat/Montserrat-ExtraLight.otf') }}");
 }
 @font-face {
     font-family: title;
-    src: url(/Conclusior/templates/Fonts/aileron.italic.otf);
+    src: url("{{ url_for('static', filename='Fonts/aileron.italic.otf') }}");
 }
 @font-face {
     font-family: btfont ;
-    src: url(/Conclusior/templates/Fonts/pophalf.ttf);
-}
+    src: url("{{ url_for('static', filename='Fonts/pophalf.ttf') }}");
+    }
 @keyframes float{
     0% { transform: translate(0,  0px); }
     50%  { transform: translate(0, 25px); }
@@ -23,6 +23,10 @@
     from, to { border-color: transparent }
     10% { border-color: black; }
 }
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 body,html{
     margin: 0;
     padding: 0;
@@ -31,7 +35,9 @@ body,html{
     display: flex;
     justify-content: space-around;
 }
-
+#Titles img{
+    src: url(D:\Projects\ProductConclusior\Conclusior\static\img_pool\0_P75Qkj2ZVRTQxPig-removebg-preview.png);
+}
 .buttons{
     border-color: B7E0FF;
     margin: 15px 25px 15px 25px;
@@ -163,4 +169,28 @@ body,html{
 }
 .Content .search:hover{
     background-color: aliceblue;
+}
+.Result{
+    background-color: 7D8ABC;
+    top: 0;
+    padding: 0;
+    height: 400px;
+}
+.Result h2{
+    text-align: center;
+    font-size: 25px;
+    margin-left: 40px;
+}
+.loader{
+    border: 1px solid #f3f3f3;
+    border-top: 16px solid #FFC7ED; 
+    /* border-radius: 50%; */
+    width: 150px;
+    height: 150px;
+    animation: spin 2s linear infinite;
+    margin-left: 400px;
+}
+.loader img{
+    height: 120px;
+    width: 120px;
 }

@@ -4,13 +4,13 @@ import numpy as np
 import pandas as pd
 import re
 import os
-import tensorflow as tf
+# import tensorflow as tf
 from numpy import array
 from keras.datasets import imdb
 from keras.preprocessing import sequence
 from keras.models import load_model
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import sequence
+# from tensorflow.keras.models import load_model
+# from tensorflow.keras.preprocessing import sequence
 
 
 IMAGE_FOLDER = os.path.join('static', 'img_pool')
@@ -21,7 +21,7 @@ app.config['UPLOAD_FOLDER'] = IMAGE_FOLDER
 #########################Code for Sentiment Analysis
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template("home.html")
+    return render_template("Homepage.html")
 
 @app.route('/sentiment_analysis_prediction', methods = ['POST', "GET"])
 def sent_anly_prediction():
@@ -60,10 +60,10 @@ def sent_anly_prediction():
             sentiment = 'Positive'
             img_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'Smiling_Emoji.png')
 
-        return render_template('home.html', text=text, sentiment=sentiment, probability=probability, image=img_filename)
+        return render_template('Homepage.html', text=text, sentiment=sentiment, probability=probability, image=img_filename)
 
 #########################Code for Sentiment Analysis
 
 if __name__ == "__main__":
     init()
-    app.run()
+    app.run(debug=True)

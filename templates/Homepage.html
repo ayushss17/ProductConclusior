@@ -1,10 +1,10 @@
 <html>
     <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='Homepage.css') }}">
         <body>
-            <link rel="stylesheet" href="/Conclusior/templates/Homepage.css">
             <div class="NavBar">
                 <div class="Titles">
-                    <img src="/Conclusior/static/img_pool/Screenshot_2024-10-24_231718-removebg-preview.png" height="45px" style="float: left; margin: 10px 0px 10px 0;"/>
+                    <img src="{{ url_for('static', filename='img_pool/Screenshot_2024-10-24_231718-removebg-preview.png') }}" height="45px" style="float: left; margin: 10px 0px 10px 0;"/>
                     <h3>Product Conclusior</h3>
                 </div>
                 <div class="buttons">
@@ -13,7 +13,6 @@
             </div>
             </div>
             <div class="intro">
-
         <pre style="float: left;">
         Ever wonder if that shiny new gadget is as great as it looks, or 
         if the reviews are full of hidden tears? 
@@ -23,7 +22,7 @@
         and reveal whether you're buying a dream or a disaster (with a smile or a facepalm). 
         Sentiments served straight to your screen, no emotional baggage attached!
                 </pre>
-                <img src="/Conclusior/static/img_pool/0_P75Qkj2ZVRTQxPig-removebg-preview.png" height="200px" style="float: right; margin-bottom: 150px;">
+                <img src="{{ url_for('static', filename='img_pool/0_P75Qkj2ZVRTQxPig-removebg-preview.png') }}" height="200px" style="float: right; margin-bottom: 150px;">
             </div>
             <div class="Content">
                 <br><br><br><br><br>
@@ -37,6 +36,13 @@
             </div>
             <button class="search">Know your product</button>
                 <h2></h2>
+            </div>
+            <div class="Result">
+                <br><br><br><br><br>
+                <h2>Your result will be displayed here</h2>
+                <div class="loader">
+                    <img src="{{ url_for('static', filename='img_pool/emotions.jpeg') }}">
+                </div>
             </div>
         </link>
 
