@@ -4,13 +4,13 @@
         <body>
             <div class="NavBar">
                 <div class="Titles">
-                    <img src="{{ url_for('static', filename='img_pool/Screenshot_2024-10-24_231718-removebg-preview.png') }}" height="45px" style="float: left; margin: 10px 0px 10px 0;"/>
+                    <img src="{{ url_for('static', filename='img_pool/Logo.png') }}" height="45px" style="float: left; margin: 20px 0px 10px 0;"/>
                     <h3>Product Conclusior</h3>
                 </div>
                 <div class="buttons">
-                <button class="acc1">Sign UP</button>
-                <button class="acc2">Sign in</button>
+                <button class="acc1" id="sec1" onclick="location.href='#sec2'">Move to Find</button>
             </div>
+            <br><br><br><br><br><br><br>
             </div>
             <div class="intro">
         <pre style="float: left;">
@@ -18,30 +18,50 @@
         if the reviews are full of hidden tears? 
         Paste a product link from any e-commerce site, and 
         let us fetch the juicy details. 
-        We'll dive deep into the reviews so you don't have to—
-        and reveal whether you're buying a dream or a disaster (with a smile or a facepalm). 
-        Sentiments served straight to your screen, no emotional baggage attached!
-                </pre>
-                <img src="{{ url_for('static', filename='img_pool/0_P75Qkj2ZVRTQxPig-removebg-preview.png') }}" height="200px" style="float: right; margin-bottom: 150px;">
+        We'll dive deep into the reviews 
+        so you don't have to and reveal whether you're buying-
+        a dream or a disaster (with a smile or a facepalm).</pre>
+                <img src="{{ url_for('static', filename='img_pool/Intro.png') }}" height="200px" style="float: right; margin-bottom: 150px;">
+                <div class="tag">
+                    <h3>Sentiments served straight to your screen, no emotional baggage attached !</h3>
+                    <hr>
+                </div>
             </div>
+            <hr id="sec2">
             <div class="Content">
-                <br><br><br><br><br>
-                <h2>You are one click away to know your product !</h2>
+                <form method="POST">
+                <h2><br><br><br>With just one click, you’ll uncover everything about your product !</h2>
                 <div class="join">
-                <input type="text" name="review" placeholder="    Paste product link">
+                <input type="text" name="user_input" placeholder="    Paste product link" id="user_input">
                 <select name="type">
                     <option name="type">E-commerce</option>
                     <option name="type">Social Media</option>
                 </select>  
             </div>
-            <button class="search">Know your product</button>
+            <button class="search" onclick="location.href='#sec3'" type="submit">Emote</button>
                 <h2></h2>
+            </form>
             </div>
+            
             <div class="Result">
+                <hr id="sec3">
                 <br><br><br><br><br>
-                <h2>Your result will be displayed here</h2>
+                <h2>See what the reviews say about your product !</h2>
                 <div class="loader">
-                    <img src="{{ url_for('static', filename='img_pool/emotions.jpeg') }}">
+                    <div class="Emotions">
+                    <img src="{{ url_for('static', filename='img_pool/Happy.png') }}" id="happy">
+                    <img src="{{ url_for('static', filename='img_pool/neutral-face.png') }}" id="neu">
+                    <img src="{{ url_for('static', filename='img_pool/Sad.png') }}" id="sad">
+                </div>
+                {% if data %}
+                <textarea class="sentiment" readonly="True">
+                    {{data}}
+                </textarea>
+                {% endif %}
+                </div>
+                <hr/>
+                <div class="footer">
+                
                 </div>
             </div>
         </link>

@@ -1,6 +1,6 @@
 @font-face {
     font-family: para;
-    src: url("{{ url_for('static', filename='Fonts/Montserrat/Montserrat-ExtraLight.otf') }}");
+    src:url(./Fonts/Font1/woff2/broted-young-plant-broted-young-plant-medium-500.woff2)
 }
 @font-face {
     font-family: title;
@@ -8,17 +8,18 @@
 }
 @font-face {
     font-family: btfont ;
-    src: url("{{ url_for('static', filename='Fonts/pophalf.ttf') }}");
+    src: url(./Fonts/Font2/Quicksand_Light.otf);
     }
 @keyframes float{
     0% { transform: translate(0,  0px); }
     50%  { transform: translate(0, 25px); }
     100%   { transform: translate(0, -0px); } 
 }
-@keyframes typing{
-    from { width: 50% }
-    to { width: 100% }
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
 }
+
 @keyframes blink-cursor{
     from, to { border-color: transparent }
     10% { border-color: black; }
@@ -27,9 +28,47 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+@keyframes slide1 {
+    0% {transform: translate(0px,0px);}
+    50%{transform: translate(330px,0px);}
+    100%{transform: translate(-0px,0px);}
+    
+}
+@keyframes slide2{
+    0% {transform: translate(0px,0px);}
+    50% {transform: translate(-335px,0px);}
+    100% {transform: translate(0px,0px);}
+}
+@keyframes spin1 {
+    0% {transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+    
+}
+@font-face {
+    font-family: tagline;
+    src: url(./Fonts/aileron.thin-italic.otf);
+}
+@font-face {
+    font-family: inp;
+    src: url(./Fonts/Font2/Quicksand_Bold.otf);
+}
+@font-face {
+    font-family: selct;
+    src: url(./Fonts/Font2/RobotoCondensed-BoldItalic.ttf);
+}
+@font-face {
+    font-family: restxt;
+    src: url(./Fonts/Font2/RobotoCondensed-Light.ttf);
+}
+@font-face {
+    font-family: restit;
+    src: url(./Fonts/Font1/JosefinSans-Bold.ttf);
+}
 body,html{
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
+    background-image: url('./img_pool/IntroBack.png');
 }
 #Titles{
     display: flex;
@@ -37,6 +76,7 @@ body,html{
 }
 #Titles img{
     src: url(D:\Projects\ProductConclusior\Conclusior\static\img_pool\0_P75Qkj2ZVRTQxPig-removebg-preview.png);
+    margin-top: 10px;
 }
 .buttons{
     border-color: B7E0FF;
@@ -50,65 +90,62 @@ body,html{
 }
 .buttons .acc1{
     border: 1px;
-    width: 100px;
+    width: 170px;
     height: 40px;
     border-radius: 10px 10px 10px 10px;
-    background-color: FFF5CD;
+    background: linear-gradient(90deg, #ffecb3, #ffc107);
     font-family: title;
     font-size: 20px;
 
 }
-.buttons .acc2{
-    border: 0px;
-    width: 100px;
-    height: 40px;
-    background-color: FFF5CD;
-    font-family: title;
-    font-size: 20px;
-
-    border-radius: 10px 10px 10px 10px;
-}
- 
 .buttons .acc1:hover{
-    background-color: fb8500;
+    background:linear-gradient(90deg, #ffca28, #ffa000);;
    
     
 }  
-.buttons .acc2:hover{
-    background-color: fb8500;
-
-}
 .NavBar h3{
-    margin-right: 1000px;
+    margin-right: 800px;
     float: left;
     font-family: title;
-    font-size: 20px;
+    font-size: 25px;
 
 }
 .intro{
-    background-color: FFF5CD;
     top:0;
     padding: 0;
-    height: 400px;
-    font-family: para   ;
+    height: 600px;
+    border: 1px solid black;
 }
 .intro pre{
-    font-family: para;
+    font-family:para;
     margin: 90px 10px 200px;
     font-size: 20px;
-    animation-name: float;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out; 
 }
 .intro img{
-    margin: 0px 50px 10px 0px;
-    height: 350px;
-    width: 450px;
+    margin: 50px 50px 0px 0px;
+    height: 250px;
+    width: 350px;
+}
+.tag{
+    height: 100px;
+    margin-top: 500px;
+}
+.tag h3{
+   margin-left:350px;
+   font-size: 24px;
+   font-family: tagline ;
+   animation: typing 4.7s steps(40, end),blink-cursor 0.75s infinite ease-in-out;
+}
+.tag hr{
+    margin-left:320px;
+    margin-right: 230px;
+    stroke-width: 10px;
+    color: black;
 }
 .NavBar{
     height: 70px;
-    background-color: B7E0FF;
+    background: linear-gradient(90deg, #b2ebf2, #80deea, #4dd0e1);
+    border-bottom: none;
     margin: 0;
     padding: 0;
     position: relative;
@@ -116,81 +153,143 @@ body,html{
     display: flex;
     
 }
+hr{
+    margin:0;
+}
 .Content{
-    background-color: FFCFB3;
-    top: 0;
-    padding: 0;
-    height: 400px;
+    margin-left: 80px;
+    height: 500px;
+    width: 1200px;
+    border-radius: 20px;
+    margin-top: 80px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(173, 216, 230, 0.5));
 }
 .Content h4{
     text-align: center;
 
 }
 .Content h2{
-    text-align: center;
-    font-size: 25px;
-    margin-left: 40px;
-    animation: typing 4.8s steps(40, end),blink-cursor .85s step-end infinite;
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 180px;
+    color: #000;
+    font-family: inp;
+
+}
+.Content input::placeholder{
+    font-weight: bold;
 
 }
 .join{
     height: 50px;
-    margin: 50px 230px 0px 400px;
+    margin: 130px 180px 60px 250px;
     width: 780px;
-    background-color: white;
+    background-color: #e3f7e8;
     border-radius: 30px ;
 }
 .Content input{
     height: 50px;
     width: 670px;
     border-radius: 30px;
-    border: 0;
+    border: 1px solid #e3f7e8;
     font-size: large;
     cursor: col-resize;
+    background-color: e3f7e8;
 }
 .Content select{
     border: 0px;
     height: 50px;
     border-radius: 30px;
     font-size: 20px;
+    background-color: #E0E4E8;
+    font-weight: bold;
+    font-family: selct;
+}
+.Content select option{
+    color: #2b3a36;
+    font-weight: bold;
+
 }
 .Content select{
     position: absolute;
 }
 .Content .search{
-    margin: 50px 500px 0px 750px;
-    height: 60;
+    margin: 20px 500px 0px 530px;
+    height: 40px;
     width: 150px;
     font-family: btfont;
-
-    border-radius: 0px 50px 50px 0;
-    background-color: FDE2ED; 
+    color: black;
+    border-radius: 30px;
+    background-color: #a4d4ae; 
     font-size: 20px;
+    font-weight: bold;
 }
 .Content .search:hover{
-    background-color: aliceblue;
+    background-color: #8bbf98;
 }
 .Result{
-    background-color: 7D8ABC;
     top: 0;
     padding: 0;
     height: 400px;
+    margin-top: 90px;
+    border-top: 1px solid black;
 }
 .Result h2{
     text-align: center;
-    font-size: 25px;
-    margin-left: 40px;
+    font-size: 29px;
+    margin:0px 0px 80px 40px;
+    font-family: restit;
 }
-.loader{
-    border: 1px solid #f3f3f3;
-    border-top: 16px solid #FFC7ED; 
-    /* border-radius: 50%; */
+.Emotions{
+    display: flex;
+    justify-content: space-between;
     width: 150px;
     height: 150px;
-    animation: spin 2s linear infinite;
-    margin-left: 400px;
+    margin: 150px 50px 60px 300px;
 }
-.loader img{
-    height: 120px;
-    width: 120px;
+.Emotions #neu{
+    height: 130px;
+    width: 158px;
+    margin-bottom: 30px;
+    margin-right: 180px;
+    animation-name: spin1;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+ 
+}
+.Emotions #happy{
+    height: 125px;
+    width: 155px;
+    margin-right:200px;
+    animation-name: slide1;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out; 
+}
+.Emotions #sad{
+    height: 125px;
+    width: 185px;
+    margin-top:2px;
+    margin-right: 100px;
+    margin-bottom: 70px; 
+    animation-name: slide2;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+.Result .sentiment{
+    height: 80px;
+    width: 500px;
+    border-radius: 10px;
+    margin: 50px 0px 150px 450px ;
+    background: linear-gradient(to right, #b5e0d7, #8bc9e3);
+    border: 0;
+    resize: none;
+    font-size: 24px;
+    font-family: restxt;
+}
+.footer{
+    height: 400px;
+
 }
