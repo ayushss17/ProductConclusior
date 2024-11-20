@@ -1,4 +1,3 @@
-# Other imports remain unchanged
 from flask import Flask, render_template, flash, request, url_for, redirect, session
 import numpy as np
 import pandas as pd
@@ -9,68 +8,9 @@ from numpy import array
 from keras.datasets import imdb
 from keras.preprocessing import sequence
 from keras.models import load_model
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import sequence
-import requests
-from analysis import getReviews
-from bs4 import BeautifulSoup
-from selenium.webdriver.chrome.service import Service
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-import time
-
-app = Flask(__name__)
-
-def init():
-    global model,graph
-    # load the pre-trained Keras model
-    model = load_model('sentiment_analysis.h5')
-
-@app.route('/', methods=['GET', 'POST'])
-def home():
-    print("rendered")
-    emotions=""
-    emot=0.0
-    emot_unq=""
-    sentiment=""
-    if request.method=="POST":
-        user_inp=request.form.get('user_input')
-        if user_inp:
-            emotions,emot,sentiment=sent_anly_prediction(user_inp)                    
-        else:
-            emotions="Invalid link"
-            emot=69
-
-        print(emotions,emot)
-            
-    return render_template("Homepage.html",data=emotions,val=emot,sentiment=sentiment)
-
-@app.route('/#sec2', methods=['GET', 'POST'])
-def sent_anly_prediction(prod_link):
-    emotions=[]
-    emot=0.0
-    url = prod_link
-    service=Service("C:\Drivers\chromedriver.exe")
-    options=webdriver.ChromeOptions()
-    options.add_argument("--headless")
-    driver=webdriver.Chrome(service=service,options=options)
-
-    try:
-        driver.get(url)
-        time.sleep(5)
-
-        reviews = driver.find_elements(By.CSS_SELECTOR, ".card-padding")
-        review_texts = [review.text for  review in reviews]
-
-        if not review_texts:
-            print("No reviews found")
-            return None
-        rev_data="\n".join(review_texts)
-        emotions,emot=getReviews(rev_data)
-    finally:
-        driver.quit()
+def sent_anly_prediction():
     print("Function excuted")
     global model 
     try:
@@ -115,8 +55,6 @@ def sent_anly_prediction(prod_link):
         sentiment = 'Positive'
         print(sentiment)
 
-    return (emotions,probability,sentiment)
+sent_anly_prediction()
 
-if __name__ == "__main__":
-    init()
-    app.run()
+        

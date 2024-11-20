@@ -30,18 +30,36 @@
 }
 @keyframes slide1 {
     0% {transform: translate(0px,0px);}
-    50%{transform: translate(330px,0px);}
+    50%{transform: translate(335px,0px);}
     100%{transform: translate(-0px,0px);}
     
 }
 @keyframes slide2{
     0% {transform: translate(0px,0px);}
-    50% {transform: translate(-335px,0px);}
+    50% {transform: translate(-305px,0px);}
     100% {transform: translate(0px,0px);}
 }
 @keyframes spin1 {
     0% {transform: rotate(0deg);}
     100%{transform: rotate(360deg);}
+    
+}
+@keyframes zoom-out {
+    0% {transform: scale3d(20px,20px);}
+    100% {transform: scale3d(20px,20px);}
+}
+@keyframes bounce {
+    0%
+    {transform: scale(1,1) translateY(0);}
+    10%{
+        transform: scale(1.1,0.9) translateY(0);
+    }
+    30%{
+        transform: scale(1,1) translateY(-6rem);
+    }
+    50%{
+        transform: scale(1,1) translateY(0);
+    }
     
 }
 @font-face {
@@ -77,6 +95,7 @@ body,html{
 #Titles img{
     src: url(D:\Projects\ProductConclusior\Conclusior\static\img_pool\0_P75Qkj2ZVRTQxPig-removebg-preview.png);
     margin-top: 10px;
+    margin-right: 100px;
 }
 .buttons{
     border-color: B7E0FF;
@@ -100,11 +119,9 @@ body,html{
 }
 .buttons .acc1:hover{
     background:linear-gradient(90deg, #ffca28, #ffa000);;
-   
-    
 }  
 .NavBar h3{
-    margin-right: 800px;
+    margin-right: 950px;
     float: left;
     font-family: title;
     font-size: 25px;
@@ -131,7 +148,7 @@ body,html{
     margin-top: 500px;
 }
 .tag h3{
-   margin-left:350px;
+   margin-left:420px;
    font-size: 24px;
    font-family: tagline ;
    animation: typing 4.7s steps(40, end),blink-cursor 0.75s infinite ease-in-out;
@@ -157,11 +174,12 @@ hr{
     margin:0;
 }
 .Content{
-    margin-left: 80px;
+    margin-left: 150px;
     height: 500px;
     width: 1200px;
     border-radius: 20px;
-    margin-top: 80px;
+    margin-top: 140px;
+    margin-bottom: 200px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(173, 216, 230, 0.5));
 }
 .Content h4{
@@ -230,28 +248,40 @@ hr{
 .Result{
     top: 0;
     padding: 0;
-    height: 400px;
-    margin-top: 90px;
+    height: 900px;
     border-top: 1px solid black;
 }
 .Result h2{
+    text-underline-position: left;
     text-align: center;
     font-size: 29px;
-    margin:0px 0px 80px 40px;
+    margin: 0px 0px 50px 40px;
     font-family: restit;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 8px;
 }
 .Emotions{
     display: flex;
+    text-align: center;
     justify-content: space-between;
     width: 150px;
     height: 150px;
-    margin: 150px 50px 60px 300px;
+    margin: 100px 1000px 60px 80px;
+}
+.result{
+    border-radius: 31px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
 }
 .Emotions #neu{
     height: 130px;
     width: 158px;
     margin-bottom: 30px;
-    margin-right: 180px;
+    margin-right: 150px;
+    margin-left: 200px;
     animation-name: spin1;
     animation-duration: 2s;
     animation-iteration-count: infinite;
@@ -259,37 +289,75 @@ hr{
  
 }
 .Emotions #happy{
+    
     height: 125px;
     width: 155px;
-    margin-right:200px;
     animation-name: slide1;
     animation-duration: 2s;
     animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out; 
+    animation-timing-function: ease-in-out;
 }
 .Emotions #sad{
     height: 125px;
     width: 185px;
-    margin-top:2px;
-    margin-right: 100px;
-    margin-bottom: 70px; 
+    padding-right: 250px;
+    margin-bottom: 70px;
     animation-name: slide2;
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
 }
-.Result .sentiment{
-    height: 80px;
-    width: 500px;
-    border-radius: 10px;
-    margin: 50px 0px 150px 450px ;
-    background: linear-gradient(to right, #b5e0d7, #8bc9e3);
-    border: 0;
-    resize: none;
-    font-size: 24px;
-    font-family: restxt;
-}
 .footer{
     height: 400px;
+}
+#res-sad,#res-happy,#res-neu{
+    height: 125px;
+    width: 185px;
+}
 
+.result img{
+    margin-bottom: 40px;
+    width: 170px;
+    height: 185px;
+    margin-top: 80px;
+    animation: bounce ease 1.5s infinite;
+    display: inline-block;
+}
+.res-data{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 40px;
+    width:600px
+}
+.res-data h3{
+    background-color: #2b3a36;
+    border-radius: 40px;
+}
+.loader{    
+   
+    border: 1px solid;
+    width: 900px;
+    background: beige;
+    height: 500px;
+    margin: 0px 200px 10px 220px;
+    border-radius: 31px;
+    background: linear-gradient(to bottom right, rgba(255, 183, 183, 0.9), rgba(255, 223, 186, 0.9));
+}
+.result h3{
+    background: linear-gradient(to right, rgba(255, 102, 102, 1), rgba(255, 178, 102, 1));
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-bottom: 0px;
+    font-size: 25px;
+    font-family: restxt;
+    animation: typing 4.7s steps(40, end), blink-cursor 0.75s infinite ease-in-out;
+}
+.result h4{
+    font-size: 20px;
+    background-color: #4dd0e1;
+    font-family: tagline;
+    margin-bottom: 10px ;
 }
