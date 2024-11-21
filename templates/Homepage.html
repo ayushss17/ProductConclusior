@@ -53,8 +53,9 @@
                     <img src="{{ url_for('static', filename='img_pool/Happy.png') }}" id="happy">
                     <img src="{{ url_for('static', filename='img_pool/neutral-face.png') }}" id="neu">
                     <img src="{{ url_for('static', filename='img_pool/Sad.png') }}" id="sad">
-                    <h4>Your results will be displayed here !</h4>
                     </div>
+                    <h5>Your results will be displayed here !</h5>
+
                     {% elif val %}
                     {% if sentiment=="Positive" %}
                     <div class="result">
@@ -64,7 +65,7 @@
                         <h4>What they're feeling the most:</h4>
                         <h2>{{data}} </h2>
                         
-                    {% elif sentiment=="Negative" < 0 %}
+                    {% elif sentiment=="Negative"%}
                     <img src="{{ url_for('static', filename='img_pool/Sad.png') }}">
                     
                     <h3>Looks like people aren't happy with this</h3>
