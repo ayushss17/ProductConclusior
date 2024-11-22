@@ -72,16 +72,15 @@
                     <h4>What they're feeling the most:</h4>  
                     <h2>{{data}}</h2>  
                     </div>                
-                    {% elif val==3 %}
+                    {% elif sentiment=="Neutral" %}
                     <img src="{{ url_for('static', filename='img_pool/neutral-face.png') }}">
                     
                     <h3>Mixed feelings about this product</h3>
                     <h4>What they're feeling the most:</h4> 
                     <h2> {{data}} </h2>
                     </div>
-                    {% elif val==0.0 %}
+                    {% elif val==18 or sentiment=="Neutral" %}
                     <img src="{{ url_for('static', filename='img_pool/neutral-face.png') }}">
-                    
                     <h3>No reviews to show right now</h3>
                     <h4>What they're feeling the most:</h4>
                     <h2>  {{data}}   </h2>  
@@ -93,7 +92,10 @@
             </div>
                 
                 <div class="footer">
-                
+                    <div class="copy">
+                        <h2>© 2024 Copyright Product Conclusior</h2>
+                    </div>
+                    
                 </div>
             </div>
         </link>

@@ -386,3 +386,18 @@ hr{
 
     font-family: tagline;
 }
+.footer{
+    height: 100px;
+
+}
+.footer .copy{
+    height: 30px;
+    margin: 100px 0px 50px 0px;
+    background: linear-gradient(90deg, #b2ebf2, #80deea, #4dd0e1);
+
+}
+.footer h2{
+    margin-top: 80px;
+    margin-left: 600px;
+    font-size: 20px;
+}
