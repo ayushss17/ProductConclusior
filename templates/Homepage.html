@@ -45,7 +45,6 @@
             
             <div class="Result">
                 <hr id="sec3">
-                <br><br><br><br><br>
                 <h2>See what the reviews say about your product !</h2>
                 <div class="loader">
                     {% if not val %}
@@ -63,27 +62,27 @@
                         
                         <h3>People are loving this product !</h3>
                         <h4>What they're feeling the most:</h4>
-                        <h2>{{data}} </h2>
+                        <h6>{{data}} </h6>
                         
                     {% elif sentiment=="Negative"%}
                     <img src="{{ url_for('static', filename='img_pool/Sad.png') }}">
                     
                     <h3>Looks like people aren't happy with this</h3>
                     <h4>What they're feeling the most:</h4>  
-                    <h2>{{data}}</h2>  
+                    <h6>{{data}}</h6>  
                     </div>                
                     {% elif sentiment=="Neutral" %}
                     <img src="{{ url_for('static', filename='img_pool/neutral-face.png') }}">
                     
                     <h3>Mixed feelings about this product</h3>
                     <h4>What they're feeling the most:</h4> 
-                    <h2> {{data}} </h2>
+                    <h6> {{data}} </h6>
                     </div>
                     {% elif val==18 or sentiment=="Neutral" %}
                     <img src="{{ url_for('static', filename='img_pool/neutral-face.png') }}">
                     <h3>No reviews to show right now</h3>
                     <h4>What they're feeling the most:</h4>
-                    <h2>  {{data}}   </h2>  
+                    <h6>  {{data}}   </h6>  
                 </div>
                     {% endif %}
                 {% endif %}

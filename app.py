@@ -35,6 +35,7 @@ def home():
     if request.method=="POST":
         user_inp=request.form.get('user_input')
         if user_inp:
+            print(user_inp)
             emotions,emot,sentiment=sent_anly_prediction(user_inp)                    
         else:
             emotions="Invalid link"
