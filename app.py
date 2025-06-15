@@ -1,4 +1,3 @@
-# Other imports remain unchanged
 from flask import Flask, render_template, flash, request, url_for, redirect, session
 import numpy as np
 import pandas as pd
@@ -13,75 +12,76 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import sequence
 import requests
 from analysis import getReviews
-from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-
 import time
 
 app = Flask(__name__)
 
 def init():
-    global model,graph
-    model = load_model('sentiment_analysis.h5')
+    global model
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    emotions=""
-    emot=0.0
-    sentiment=""
-    if request.method=="POST":
-        user_inp=request.form.get('user_input')
+    emotions = ""
+    emot = 0.0
+    sentiment = ""
+    if request.method == "POST":
+        user_inp = request.form.get('user_input')
         if user_inp:
             print(user_inp)
-            emotions,emot,sentiment=sent_anly_prediction(user_inp)                    
+            emotions, emot, sentiment = sent_anly_prediction(user_inp)                    
         else:
-            emotions="Invalid link"
-            emot=18
+            emotions = "Invalid link"
+            emot = 18
 
-        print(emotions,emot)
+        print(emotions, emot)
             
-    return render_template("Homepage.html",data=emotions,val=emot,sentiment=sentiment)
+    return render_template("NewHome.html", data=emotions, val=emot, sentiment=sentiment)
 
-@app.route('/#sec2', methods=['GET', 'POST'])
 def sent_anly_prediction(prod_link):
-    emotions=[]
-    emot=0.0
+    emotions = []
+    emot = 0.0
+    sentiment = ""
+
     url = prod_link
-    service=Service("C:\Drivers\chromedriver.exe")
-    options=webdriver.ChromeOptions()
+    service = Service("C://chromedriver.exe")
+    options = webdriver.ChromeOptions()
     options.add_argument("--headless")
-    driver=webdriver.Chrome(service=service,options=options)
+    driver = webdriver.Chrome(service=service, options=options)
 
     try:
         driver.get(url)
         time.sleep(5)
 
         reviews = driver.find_elements(By.CSS_SELECTOR, ".card-padding")
-        review_texts = [review.text for  review in reviews]
+        review_texts = [review.text for review in reviews]
 
         if not review_texts:
             print("No reviews found")
-            rev_data="No reviews found"
+            rev_data = "No reviews found"
         else:
-            rev_data="\n".join(review_texts)
-            emotions,emot=getReviews(rev_data)
+            rev_data = "/n".join(review_texts)
+            emotions, emot, sentiment = getReviews(rev_data)  
     finally:
         driver.quit()
-    print("Function excuted")
+
+    print("Function executed")
+    
     global model 
     try:
-        model = load_model('D:\MP\ProductConclusior\sentiment_analysis.h5')
+        model = load_model("D:/Projects/ProductConclusior/sentiment_analysis.h5")
         print("Model loaded successfully.")
     except Exception as e:
         print(f"Error loading model: {e}")
         model = None  
-    if(rev_data!="No reviews found"):
+
+    if rev_data != "No reviews found":
         word_to_id = imdb.get_word_index()
         vocab_size = 5000
-        word_to_id = {k: (v + 3) for k, v in word_to_id.items()}  # Shift indices for special tokens
+        word_to_id = {k: (v + 3) for k, v in word_to_id.items()}  
         word_to_id["<PAD>"] = 0
         word_to_id["<START>"] = 1
         word_to_id["<UNK>"] = 2
@@ -93,31 +93,33 @@ def sent_anly_prediction(prod_link):
         text = re.sub(strip_special_chars, "", text.lower())
 
         words = text.split()  #list
-        vocab_size = 5000  # Match this to the embedding layer
+        vocab_size = 5000 
         x_test = [[word_to_id.get(word, 0) if word_to_id.get(word, 0) < vocab_size else 0 for word in words]]
         x_test = pad_sequences(x_test, maxlen=500)  
         vector = np.array([x_test.flatten()])
 
         if model is None:
-            return "Model not loaded.", 500  
+            return "Model not loaded.", 500, "Neutral"  
+
         probability = model.predict(array([vector][0]))[0][0]
 
         if probability < (0.4 - 0.1):
             sentiment = 'Negative'
             print(sentiment)
-        elif (0.4-0.1)<=probability<=(0.4+0.1):
+        elif (0.4 - 0.1) <= probability <= (0.4 + 0.1):
             sentiment = "Neutral"
             print("Neutral")
         else:
             sentiment = 'Positive'
             print(sentiment)
 
-        return (emotions,probability,sentiment)
+        return emotions, emot, sentiment
+
     else:
-        emotions=["No emotions"]
-        probability=0.0
-        sentiment="Neutral"
-        return (emotions,probability,sentiment)
+        emotions = ["No emotions"]
+        probability = 0.0
+        sentiment = "Neutral"
+        return emotions, probability, sentiment  
 
 if __name__ == "__main__":
     init()

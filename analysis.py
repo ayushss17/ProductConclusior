@@ -9,42 +9,37 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 
 def getReviews(rev_data):
-
-    lower_dt=rev_data.lower()
-
+    lower_dt = rev_data.lower()
     print(lower_dt)
 
-    cleaned_txt=lower_dt.translate(str.maketrans('','',string.punctuation))
+    cleaned_txt = lower_dt.translate(str.maketrans('', '', string.punctuation))
 
-
-
-    token_words=word_tokenize(cleaned_txt,"english")
-    final_dt=[]
+    token_words = word_tokenize(cleaned_txt, "english")
+    final_dt = []
     for word in token_words:
         if word not in stopwords.words("english"):
             final_dt.append(word)
     
-    emotion_list=set()
-    with open("static\emotions.txt","r") as file:
+    emotion_list = set()
+    with open("static\\emotions.txt", "r") as file:
         for line in file:
-            clear_line=line.replace("'","").replace(",","").replace("\n","").strip()
-            word,emotion=clear_line.split(':')
+            clear_line = line.replace("'", "").replace(",", "").replace("\n", "").strip()
+            word, emotion = clear_line.split(':')
             if word in final_dt:
                 emotion_list.add(emotion)
 
-    print("\nEmotion list: ",emotion_list)
-    res=''.join(emotion_list)
-    score=SentimentIntensityAnalyzer().polarity_scores(cleaned_txt)
-    neg=score['neg']
-    pos=score['pos']
-    if(neg>pos):
-        return (res,neg)
-    elif pos>neg:
-        return (res,pos)
+    print("\nEmotion list: ", emotion_list)
+    res = ''.join(emotion_list)
+    score = SentimentIntensityAnalyzer().polarity_scores(cleaned_txt)
+    neg = score['neg']
+    pos = score['pos']
+
+    if neg > pos:
+        sentiment = 'Negative'
+        return res, neg, sentiment  # Return 3 values: emotions, emot (neg), sentiment
+    elif pos > neg:
+        sentiment = 'Positive'
+        return res, pos, sentiment  # Return 3 values: emotions, emot (pos), sentiment
     else:
-        return 3
-
-
-
-
-
+        sentiment = 'Neutral'
+        return res, 0.0, sentiment  # Return 3 values: emotions, emot (0.0), sentiment
