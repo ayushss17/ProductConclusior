@@ -123,4 +123,4 @@ def sent_anly_prediction(prod_link):
 
 if __name__ == "__main__":
     init()
-    app.run()
+    app.run(host = '0.0.0.0', debug = True)
